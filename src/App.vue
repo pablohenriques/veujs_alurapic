@@ -21,9 +21,9 @@ export default {
 
 	created() {
 		let promisse = this.$http.get("http://localhost:3000/v1/fotos");
-		promisse.then(res => {
-			res.json().then(fotos => this.fotos = fotos);
-		});
+		promisse
+			.then(res => res.json())
+			.then(fotos => this.fotos = fotos, err => console.log(err));
 	}
 }
 </script>
