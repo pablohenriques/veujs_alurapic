@@ -9,7 +9,7 @@ export default {
     methods: {
         disparaAcao() {
             if(confirm("Confirma operação ?")) {
-                this.$emit("botaoAtivado", new Date());
+                this.$emit("botaoAtivado");
             }
         }
     }
