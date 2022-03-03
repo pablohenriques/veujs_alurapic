@@ -27,6 +27,7 @@
 import Painel from '../shared/painel/Painel.vue';
 import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva.vue';
 import Botao from '../shared/botao/Botao.vue';
+import FotoService from "../../domain/foto/FotoService";
 
 export default {
 
@@ -36,18 +37,25 @@ export default {
 		"meu-botao": Botao
 	},
 
+	created() {
+		this.service 
+			.lista()
+			.then(fotos => this.fotos = fotos, err => console.log(err));
+	},
+
 	data() {
 		return {
 			titulo: "Alurapic",
 			fotos: [],
 			filtro: "",
-			mensagem: ""
+			mensagem: "",
+			service: new FotoService(this.$resource)
 		}
 	},
 
 	methods: {
 		remove(foto) {
-			this.resource.delete({ id: foto._id })
+			this.service.apaga(foto._id)
 			.then(
 				() => {
 					let indice = this.fotos.indexOf(foto);
@@ -71,14 +79,6 @@ export default {
 				return this.fotos;
 			}		
 		}
-	},
-
-	created() {
-		this.resource = this.$resource("v1/fotos{/id}");
-		this.resource
-			.query()
-			.then(res => res.json())
-			.then(fotos => this.fotos = fotos, err => console.log(err));
 	}
 }
 </script>
