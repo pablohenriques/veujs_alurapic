@@ -3,9 +3,18 @@ import App from './App.vue'
 
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
+import VeeValidate from "vee-validate";
 
 import { routes } from "./routes";
+
+import msg from './pt_BR';
 import './directives/Transform';
+import "bootstrap/dist/css/bootstrap.css";
+import "./assets/css/teste.css";
+import "./assets/js/teste.js";
+
+import "jquery/dist/jquery.js";
+import "bootstrap/dist/js/bootstrap.js";
 
 
 Vue.use(VueResource);
@@ -17,6 +26,14 @@ const router = new VueRouter({
   mode: "history"
 })
 
+Vue.use(VeeValidate, {
+  locale: 'pt_BR',
+  dictionary: {
+    pt_BR: {
+      messages: msg
+    }
+  }
+});
 
 new Vue({
   el: '#app',

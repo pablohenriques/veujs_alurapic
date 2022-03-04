@@ -34,6 +34,8 @@ export default {
 </script>
 
 <style>
+    /* // $cor: blue; */
+
     .botao {
         display: inline-block;
         padding: 10px;
@@ -44,6 +46,7 @@ export default {
 
     .botao-perigo {
         background: firebrick;
+        /* // background: $cor; */
         color: white;
     }
 
